@@ -6,12 +6,15 @@ def print_solution(subset):
     print(" ".join(map(str, subset)))
 
 def subset_sum(index, curr_sum, start, subset):
-    if (curr_sum == target_sum):
+    if curr_sum == target_sum:
         print_solution(subset)
-        return 
+        return
+
     for i in range(start, n):
-        if curr_sum+numbers[i] <= target_sum:
-            subset_sum(index+1, curr_sum+numbers[i], i+1, subset+[numbers[i]])
+        if curr_sum + numbers[i] <= target_sum:
+            #print(f"{curr_sum} + {numbers[i]} <= {target_sum}")  # Fixed line
+            #print(index + 1, curr_sum + numbers[i], i + 1, subset + [numbers[i]])
+            subset_sum(index + 1, curr_sum + numbers[i], i + 1, subset + [numbers[i]])
 
 print(f"Subsets with sum {target_sum}:")
-subset_sum(0,0,0,[])
+subset_sum(0, 0, 0, [])
